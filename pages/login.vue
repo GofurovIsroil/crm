@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { AppwriteException } from "appwrite";
 import { v4 as uuid } from "uuid";
 import { UseAuthStore, useIsLoadingStore } from "~/store/auth.store";
 
@@ -19,14 +20,19 @@ const login = async () => {
     isLoadingStore.set(true);
 
     // Check if there's an active session
-    const currentSession = await account.getSession("current");
-
-    if (!currentSession) {
-      // If no session is active, create a new session
-      await account.createEmailPasswordSession(
-        emailRef.value,
-        passwordRef.value
-      );
+    let currentSession;
+    try {
+      currentSession = await account.getSession("current");
+    } catch (error) {
+      if (error instanceof AppwriteException && error.code === 401) {
+        // User is not authenticated, proceed with login
+        await account.createEmailPasswordSession(
+          emailRef.value,
+          passwordRef.value
+        );
+      } else {
+        throw error; // Re-throw if it's not an authentication issue
+      }
     }
 
     // Fetch additional user data if needed
@@ -41,7 +47,7 @@ const login = async () => {
     }
 
     // Navigate to home after successful login
-    await router.replace("/");
+    await router.push("/");
   } catch (error) {
     console.error("Login failed:", error);
   } finally {
