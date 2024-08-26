@@ -80,8 +80,8 @@ const registration = async () => {
 </script>
 
 <template>
-  <div class="flex items-center justify-center min-h-screen w-full">
-    <div class="rounded bg-[#0e172a] w-1/2 p-5 lg:w-1/4">
+  <div class="flex items-center justify-center min-h-screen w-full p-5">
+    <div class="rounded bg-[#0e172a] w-full max-w-[500px] p-5">
       <h1 class="text-2xl font-bold text-center mb-5 text-white">Login</h1>
 
       <form>
