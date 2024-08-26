@@ -13,7 +13,7 @@ const isLocalOpen = computed({
 
 <template>
   <div>
-    <USlideover v-model="isLocalOpen">
+    <USlideover v-model="isLocalOpen" class="w-[80vw] left-auto">
       <UCard
         class="flex flex-col flex-1 overflow-y-auto"
         :ui="{

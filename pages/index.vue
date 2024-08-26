@@ -96,12 +96,13 @@ const handleDrop = (targetColumn: IColumn) => {
     <h1 class="font-bold text-2xl mb-10">CRM SYSTEM</h1>
     <div v-if="isLoading">Loading...</div>
     <div v-else>
-      <div class="grid grid-cols-5 gap-16">
+      <div class="grid grid-cols-1 gap-16 lg:grid-cols-5">
         <div
           v-for="(col, i) in data"
           :key="col.id"
           @dragover="handleDragOver"
           @drop="() => handleDrop(col)"
+          class="min-h-screen"
         >
           <div
             class="text-center rounded bg-slate-700 py-1 px-5 mb-2 text-white text-base"
@@ -118,7 +119,9 @@ const handleDrop = (targetColumn: IColumn) => {
             @dragstart="() => handleDragStart(card, col)"
           >
             <UiCardHeader role="button">
-              <div class="flex items-center justify-between">
+              <div
+                class="flex flex-col gap-1 w-full items-center justify-between xl:flex-row"
+              >
                 <UiCardTitle>{{ card.name }}</UiCardTitle>
                 <p
                   @click="store.set(card)"
