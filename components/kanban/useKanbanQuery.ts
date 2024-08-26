@@ -36,6 +36,10 @@ export const useKanbanQuery = () => {
             id: deal.$id,
             name: deal.name,
             price: deal.price,
+            // customer:{
+            //   email:deal.customer.email,
+            //   name:deal.customer.name
+            // }
             companyName: deal.customer && deal.customer.name,
             status: column.id,
           });

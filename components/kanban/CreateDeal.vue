@@ -46,8 +46,10 @@ const { mutate, isPending, error } = useMutation({
     DB.createDocument(DB_ID, COLLECTION_DEALS, uuid(), {
       name: data.name,
       price: data.price,
-      companyEmail: data.companyEmail,
-      companyName: data.companyName,
+      customers: {
+        email: data.customer.email,
+        name: data.customer.name,
+      },
       status: data.status,
     }),
   onSuccess() {

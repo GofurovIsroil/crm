@@ -118,7 +118,15 @@ const handleDrop = (targetColumn: IColumn) => {
             @dragstart="() => handleDragStart(card, col)"
           >
             <UiCardHeader role="button">
-              <UiCardTitle>{{ card.name }}</UiCardTitle>
+              <div class="flex items-center justify-between">
+                <UiCardTitle>{{ card.name }}</UiCardTitle>
+                <p
+                  @click="store.set(card)"
+                  class="bg-white text-slate-800 p-0.5 rounded-sm"
+                >
+                  About
+                </p>
+              </div>
               <UiCardDescription>{{
                 convertCurrency(card.price)
               }}</UiCardDescription>
@@ -131,7 +139,7 @@ const handleDrop = (targetColumn: IColumn) => {
         </div>
       </div>
     </div>
-    <!-- <KanbanSlideover /> -->
+    <KanbanSlideoverSlideOver />
   </div>
 </template>
 
