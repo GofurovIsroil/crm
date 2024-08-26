@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/vue-query";
 import { COLLECTION_DEALS, DB_ID } from "~/app.constants";
 import { KANBAN_DATA } from "./kanban.data";
 import type { IDeal } from "~/types/deals.types";
-import type { ICard } from "./kanban.types";
+import type { ICard, IColumn } from "./kanban.types";
 
 // Предположим, что DB.listDocuments импортирован или доступен в контексте
 // import { DB } from '~/db'; // Обязательно добавьте правильный импорт
@@ -21,19 +21,23 @@ export const useKanbanQuery = () => {
       }
     },
     select(data) {
-      const newBoard = [...KANBAN_DATA];
-      const deals = data.documents as unknown as ICard[];
+      const newBoard: IColumn[] = KANBAN_DATA.map((col) => ({
+        ...col,
+        items: [],
+      }));
+
+      const deals = data.documents as unknown as IDeal[];
 
       for (const deal of deals) {
         const column = newBoard.find((col) => col.id === deal.status);
         if (column) {
           column.items.push({
             $createdAt: deal.$createdAt,
-            id: deal.id,
+            id: deal.$id,
             name: deal.name,
             price: deal.price,
-            companyName: deal.companyName, // Обработка отсутствующих данных
-            status: column.name,
+            companyName: deal.customer && deal.customer.name,
+            status: column.id,
           });
         }
       }

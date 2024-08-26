@@ -51,8 +51,7 @@ const { mutate, isPending, error } = useMutation({
       status: data.status,
     }),
   onSuccess() {
-    // props.refetch && props.refetch();
-    router.go(0);
+    props.refetch && props.refetch();
     handleReset();
   },
   onError(err) {

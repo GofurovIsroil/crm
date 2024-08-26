@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxt/icon": "^1.4.8",
     "@nuxt/image": "^1.7.0",
+    "@nuxt/ui": "^2.18.4",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@pinia/nuxt": "^0.5.4",
     "@radix-icons/vue": "^1.0.0",
@@ -36,7 +37,6 @@
     "vue": "latest"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.12.1",
     "@types/uuid": "^10.0.0",
     "dayjs-nuxt": "^2.1.9",
     "shadcn": "^1.0.0",
