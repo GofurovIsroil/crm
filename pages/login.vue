@@ -4,7 +4,7 @@ import { v4 as uuid } from "uuid";
 import { UseAuthStore, useIsLoadingStore } from "~/store/auth.store";
 
 useHead({
-  title: "Login",
+  title: "Login | CRM SYSTEM",
 });
 
 const emailRef = ref("");

@@ -21,11 +21,11 @@ const { data, isLoading, refetch } = useKanbanQuery();
       <div class="grid grid-cols-5 gap-16">
         <div v-for="(col, i) in data" :key="col.id">
           <div
-            class="text-center rounded bg-slate-700 py-1 px-5 mb-2 text-white"
+            class="text-center rounded bg-slate-700 py-1 px-5 mb-2 text-white text-base"
           >
             {{ col.name }}
           </div>
-
+          <KanbanCreateDeal :refetch="refetch" :status="col.id" />
           <UiCard
             v-for="card in col.items"
             :key="card.id"
@@ -38,7 +38,7 @@ const { data, isLoading, refetch } = useKanbanQuery();
                 convertCurrency(card.price)
               }}</UiCardDescription>
             </UiCardHeader>
-            <UiCardContent>{{ card.companyNmae }}</UiCardContent>
+            <UiCardContent>{{ card.companyName }}</UiCardContent>
             <UiCardFooter>{{
               dayjs(card.$createdAt).format("DD MMMM YYYY")
             }}</UiCardFooter>

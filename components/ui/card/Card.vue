@@ -23,13 +23,17 @@ const props = defineProps<{
 <style scoped>
 @keyframes show {
   from {
-    @apply border-purple-900 scale-50 translate-y-[-30px] opacity-50;
+    border-color: #4a148c; /* Эквивалентно классу border-purple-900 */
+    transform: scale(0.5) translateY(-30px);
+    opacity: 0.5;
   }
   90% {
-    @apply border-purple-900;
+    border-color: #4a148c; /* Эквивалентно классу border-purple-900 */
   }
   to {
-    @apply border-transparent scale-100 translate-y-0 opacity-100;
+    border-color: transparent;
+    transform: scale(1) translateY(0);
+    opacity: 1;
   }
 }
 

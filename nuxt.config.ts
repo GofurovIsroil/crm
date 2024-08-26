@@ -20,6 +20,12 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@pinia/nuxt",
     "dayjs-nuxt",
+    [
+      "@vee-validate/nuxt",
+      {
+        autoImports: true,
+      },
+    ],
   ],
   shadcn: {
     prefix: "ui",
