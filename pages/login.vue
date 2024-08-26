@@ -81,7 +81,7 @@ const registration = async () => {
 
 <template>
   <div class="flex items-center justify-center min-h-screen w-full">
-    <div class="rounded bg-[#0e172a] w-1/4 p-5">
+    <div class="rounded bg-[#0e172a] w-1/2 p-5 lg:w-1/4">
       <h1 class="text-2xl font-bold text-center mb-5 text-white">Login</h1>
 
       <form>
@@ -103,9 +103,13 @@ const registration = async () => {
           class="mb-3 text-white"
           v-model="nameRef"
         />
-        <div class="flex items-center justify-center gap-5">
-          <UiButton type="button" @click="login">Login</UiButton>
-          <UiButton type="button" @click="registration">Registration</UiButton>
+        <div
+          class="flex flex-col items-center justify-center gap-5 lg:flex-row"
+        >
+          <UiButton type="button" @click="login" class="w-full">Login</UiButton>
+          <UiButton type="button" @click="registration" class="w-full"
+            >Registration</UiButton
+          >
         </div>
       </form>
     </div>
