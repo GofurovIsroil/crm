@@ -117,6 +117,7 @@ const handleDrop = (targetColumn: IColumn) => {
             class="mb-3 bg-[#0e172a] text-white cursor-pointer"
             draggable="true"
             @dragstart="() => handleDragStart(card, col)"
+            @touchstart="() => handleDragStart(card, col)"
           >
             <UiCardHeader role="button">
               <div
